@@ -26,7 +26,7 @@ const bikes = [
 
   {
     name: "Bike 4",
-    weight: 50,
+    weight: 24,
     img: "img/bike4.jpeg"
   },
 
@@ -37,25 +37,21 @@ const bikes = [
   }
 ];
 
-// Oggetto che conterrà le info della bici più pesa
-let heavierBike = {
-  name: "",
-  weight: 0,
-  img: ""
-};
+// Oggetto che conterrà le info della bici più leggera
+let lighterBike = bikes[0];
 
 
 const catalogueBox = document.querySelector(".bike_catalogue");
 
-const heavierBox = document.querySelector(".heavier_bike_box");
+const lighterBox = document.querySelector(".lighter_bike_box");
 
 
-console.log(heavierBike);
+console.log(lighterBike);
 console.log(bikes);
 
 stampCatalogue(bikes);
 
-stampHeavierBike(heavierBike);
+stampLighterBike(lighterBike);
 
 // Funzione che stampa l'intero catalogo di bici da corsa
 function stampCatalogue (arrayBike){
@@ -78,10 +74,10 @@ function stampCatalogue (arrayBike){
         </div>
     `;
 
-    // Se la bici è più pesa dell'oggetto heavierBike sostituisce le info di quest'ultima con la bici in esame
-    if( weight > heavierBike.weight){
-      heavierBike = bike;
-      console.log(heavierBike);
+    // Se la bici è più leggera dell'oggetto lighterBike sostituisce le info di quest'ultima con la bici in esame
+    if(weight < lighterBike.weight){
+      lighterBike = bike;
+      console.log(lighterBike);
     }
   
     console.log("NOME: --->", name);
@@ -91,12 +87,12 @@ function stampCatalogue (arrayBike){
 
 }
 
-// Funzione che stampa la bici più pesante
-function stampHeavierBike (bike){
+// Funzione che stampa la bici più leggera
+function stampLighterBike (bike){
   
   const {name, weight, img} = bike;
 
-  heavierBox.innerHTML += `
+  lighterBox.innerHTML += `
         <div class="col">
           <div class="card shadow-sm">
             <img class="bd-placeholder-img card-img-top" width="350px" height="150px" src="${img}"></img>
